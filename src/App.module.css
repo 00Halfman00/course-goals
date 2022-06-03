@@ -1,0 +1,17 @@
+li {
+  list-style: none;
+}
+
+
+*{
+  text-align: center;
+}
+
+.app {
+  background-color: white;
+  padding: 1rem 0;
+  width: 90%;
+  margin: 1rem 1rem;
+  border-radius: 12px;
+  border: solid darkgray 5px;
+}

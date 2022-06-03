@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import './GoalInput.css';
+import React, { useState, useRef } from 'react';
+import styles from './GoalInput.module.css';
 
 function GoalInput(props) {
   const [text, setText] = useState();
+  const inputRef = useRef();
 
   function setGoalHandler(ev) {
     setText({
@@ -14,16 +15,22 @@ function GoalInput(props) {
   function submitHandler(ev) {
     ev.preventDefault();
     if (text) {
+      inputRef.current.value = '';
       return props.addGoal(text);
     }
   }
 
   return (
-    <form className='goal-form' onSubmit={submitHandler}>
-      <div className='form-div'>
-        <label className='form-label'>Goals:</label>
-        <input className='form-input' type="text" onChange={setGoalHandler} />
-        <button className='form-button  '>add goal</button>
+    <form className={styles['goal-form']} onSubmit={submitHandler}>
+      <div className={styles['form-div']}>
+        <label className={styles['form-label']}>Goals:</label>
+        <input
+          ref={inputRef}
+          className={styles['form-input']}
+          type="text"
+          onChange={setGoalHandler}
+        />
+        <button className={styles['form-button']}>add goal</button>
       </div>
     </form>
   );
